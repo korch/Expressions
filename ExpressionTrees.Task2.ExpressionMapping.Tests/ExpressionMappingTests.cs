@@ -16,5 +16,21 @@ namespace ExpressionTrees.Task2.ExpressionMapping.Tests
 
             var res = mapper.Map(new Foo());
         }
+
+        [TestMethod]
+        public void Map()
+        {
+            var mapGenerator = new MappingGenerator();
+            var mapper = mapGenerator.Generate<Foo, Bar>();
+
+            Foo foo = new Foo() { HowOldYouOnTracker = 2, DoYouLikeWorkOnAProject = false, Why = "Special thanks to Dan Paladino, to new method of work and to great help desk team.. oh sorry, ignore desk team.." };
+            Bar bar = mapper.Map(foo);
+
+            Assert.AreEqual(foo.HowOldYouOnTracker, bar.HowOldYouOnTracker);
+            Assert.AreEqual(foo.DoYouLikeWorkOnAProject, bar.DoYouLikeWorkOnAProject);
+            Assert.AreEqual(foo.Why, bar.Why);
+        }
+
+     
     }
 }

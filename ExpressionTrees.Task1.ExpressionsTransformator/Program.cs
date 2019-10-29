@@ -19,6 +19,7 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
             Console.WriteLine();
 
             // todo: feel free to add your code here
+
             Expression<Func<int, int>> exp = (a) => a + (a + 1) * (a + 5) * (a + 1) + a + (a - 1);
             Expression<Func<int, string, string>> exp2 = (a, Name) => a + (a - 1) * (a + 5) * (a + 1) + Name;
 
@@ -31,7 +32,6 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
             Console.WriteLine();
             var replacedParamsExpression = (new ReplaceParamsExpressionVisitor(exp2, a => 3, Name => " Raccoons forever").ReplaceWithConstant());
             Console.WriteLine(replacedParamsExpression + " result: " + replacedParamsExpression.Compile().DynamicInvoke());
-
 
             Console.ReadLine();
         }
